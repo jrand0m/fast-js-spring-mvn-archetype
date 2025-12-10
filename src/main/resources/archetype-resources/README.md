@@ -75,6 +75,14 @@ While running in development mode:
   - Username: `sa`
   - Password: (leave blank)
 
+## Development
+
+For detailed guides on extending the application, see [DEVELOPMENT.md](./DEVELOPMENT.md):
+
+- **Adding a new endpoint with database object** - Complete guide for creating new entities
+- **Adding a new backend endpoint** - How to add operations to existing entities
+- **Adding a new UI element** - Creating components that bind to backend operations
+
 ## Just Commands
 
 The project includes a `justfile` for common tasks:

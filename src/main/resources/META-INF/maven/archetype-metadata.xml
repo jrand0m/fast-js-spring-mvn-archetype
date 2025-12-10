@@ -29,6 +29,7 @@
             <directory></directory>
             <includes>
                 <include>README.md</include>
+                <include>DEVELOPMENT.md</include>
                 <include>.gitignore</include>
                 <include>.tool-versions</include>
                 <include>Dockerfile</include>
