@@ -1,0 +1,46 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Build artifacts
+target/
+node_modules/
+.next/
+out/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Documentation
+README.md
+*.md
+docs/
+
+# Test files
+**/*test*
+**/*Test*
+coverage/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+Jenkinsfile

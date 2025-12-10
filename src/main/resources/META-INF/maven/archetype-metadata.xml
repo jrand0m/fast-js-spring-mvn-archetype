@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="springboot-nextjs-archetype"
+                      xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0
+                      http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd">
+
+    <requiredProperties>
+        <requiredProperty key="groupId">
+            <defaultValue>com.example</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="artifactId">
+            <defaultValue>my-app</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="version">
+            <defaultValue>1.0.0-SNAPSHOT</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="package">
+            <defaultValue>com.example.myapp</defaultValue>
+        </requiredProperty>
+    </requiredProperties>
+
+    <fileSets>
+        <!-- Root level files -->
+        <fileSet filtered="true" packaged="false">
+            <directory></directory>
+            <includes>
+                <include>README.md</include>
+                <include>.gitignore</include>
+                <include>Dockerfile</include>
+                <include>.dockerignore</include>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+
+        <!-- Java source files -->
+        <fileSet filtered="true" packaged="true">
+            <directory>src/main/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- Java test files -->
+        <fileSet filtered="true" packaged="true">
+            <directory>src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- Resources -->
+        <fileSet filtered="true" packaged="false">
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>**/*.properties</include>
+                <include>**/*.sql</include>
+            </includes>
+        </fileSet>
+
+        <!-- Frontend files -->
+        <fileSet filtered="true" packaged="false">
+            <directory>frontend</directory>
+            <includes>
+                <include>**/*</include>
+            </includes>
+            <excludes>
+                <exclude>node_modules/**</exclude>
+                <exclude>.next/**</exclude>
+                <exclude>out/**</exclude>
+                <exclude>build/**</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</archetype-descriptor>
