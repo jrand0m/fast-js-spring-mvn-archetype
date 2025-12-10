@@ -7,7 +7,7 @@
 
     <groupId>me.nd0.jra</groupId>
     <artifactId>springboot-nextjs-archetype</artifactId>
-    <version>1.1.6</version>
+    <version>1.1.7</version>
     <packaging>maven-archetype</packaging>
 
     <name>Spring Boot + Next.js Archetype</name>
