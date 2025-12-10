@@ -17,6 +17,9 @@ public class Item {
     @Column(length = 1000)
     private String description;
 
+    @Column(nullable = false)
+    private Boolean processed = false;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
@@ -66,6 +69,14 @@ public class Item {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Boolean getProcessed() {
+        return processed;
+    }
+
+    public void setProcessed(Boolean processed) {
+        this.processed = processed;
     }
 
     public LocalDateTime getCreatedAt() {

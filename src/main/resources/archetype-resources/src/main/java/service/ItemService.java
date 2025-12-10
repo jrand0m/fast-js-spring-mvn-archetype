@@ -85,4 +85,15 @@ public class ItemService {
     public long countItems() {
         return itemRepository.count();
     }
+
+    /**
+     * Toggle the processed flag of an item
+     */
+    public Optional<Item> toggleProcessed(Long id) {
+        return itemRepository.findById(id)
+                .map(item -> {
+                    item.setProcessed(!item.getProcessed());
+                    return itemRepository.save(item);
+                });
+    }
 }

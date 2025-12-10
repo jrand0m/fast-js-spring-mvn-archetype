@@ -4,6 +4,7 @@ export interface Item {
   id?: number;
   name: string;
   description: string;
+  processed?: boolean;
   createdAt?: string;
   updatedAt?: string;
 }
@@ -74,6 +75,16 @@ export const itemsApi = {
     const response = await fetch(`#[[${API_BASE_URL}]]#/items/count`);
     if (!response.ok) {
       throw new Error('Failed to get item count');
+    }
+    return response.json();
+  },
+
+  async toggleProcessed(id: number): Promise<Item> {
+    const response = await fetch(`#[[${API_BASE_URL}]]#/items/#[[${id}]]#/toggle-processed`, {
+      method: 'POST',
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to toggle processed flag for item #[[${id}]]#`);
     }
     return response.json();
   },

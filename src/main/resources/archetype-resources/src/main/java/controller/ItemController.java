@@ -86,4 +86,14 @@ public class ItemController {
         long count = itemService.countItems();
         return ResponseEntity.ok(count);
     }
+
+    /**
+     * POST /api/items/{id}/toggle-processed - Toggle the processed flag
+     */
+    @PostMapping("/{id}/toggle-processed")
+    public ResponseEntity<Item> toggleProcessed(@PathVariable Long id) {
+        return itemService.toggleProcessed(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
 }
