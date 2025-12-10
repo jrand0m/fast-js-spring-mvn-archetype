@@ -77,11 +77,19 @@ While running in development mode:
 
 ## Development
 
-For detailed guides on extending the application, see [DEVELOPMENT.md](./DEVELOPMENT.md):
+For detailed guides on extending the application:
 
+### Core Development Guide
+
+See [DEVELOPMENT.md](./DEVELOPMENT.md):
 - **Adding a new endpoint with database object** - Complete guide for creating new entities
 - **Adding a new backend endpoint** - How to add operations to existing entities
 - **Adding a new UI element** - Creating components that bind to backend operations
+
+### Advanced Examples
+
+See [COMBOBOX_EXAMPLE.md](./COMBOBOX_EXAMPLE.md):
+- **Combobox with Action Button** - Complete example showing how to create a dropdown populated with items and a button that updates the selected item's description
 
 ## Just Commands
 

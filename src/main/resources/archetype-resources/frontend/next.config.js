@@ -21,11 +21,6 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: false,
   },
-
-  // Environment variables available to the browser
-  env: {
-    API_BASE_URL: process.env.API_BASE_URL || '/api',
-  },
 };
 
 module.exports = nextConfig;
