@@ -377,8 +377,8 @@ spring.h2.console.path=/h2-console
 # Show SQL queries
 spring.jpa.show-sql=true
 
-# CORS (allow Next.js dev server)
-cors.allowed-origins=http://localhost:3001
+# CORS (allow any origin in development)
+cors.allowed-origins=*
 ```
 
 Activate with: `mvn dev:run` (automatically uses dev profile)
