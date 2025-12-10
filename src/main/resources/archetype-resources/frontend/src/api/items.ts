@@ -11,7 +11,7 @@ export interface Item {
 
 export const itemsApi = {
   async getAll(): Promise<Item[]> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items`);
+    const response = await fetch(`${API_BASE_URL}/items`);
     if (!response.ok) {
       throw new Error('Failed to fetch items');
     }
@@ -19,15 +19,15 @@ export const itemsApi = {
   },
 
   async getById(id: number): Promise<Item> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items/#[[${id}]]#`);
+    const response = await fetch(`${API_BASE_URL}/items/${id}`);
     if (!response.ok) {
-      throw new Error(`Failed to fetch item #[[${id}]]#`);
+      throw new Error(`Failed to fetch item ${id}`);
     }
     return response.json();
   },
 
   async search(name: string): Promise<Item[]> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items/search?name=#[[${encodeURIComponent(name)}]]#`);
+    const response = await fetch(`${API_BASE_URL}/items/search?name=${encodeURIComponent(name)}`);
     if (!response.ok) {
       throw new Error('Failed to search items');
     }
@@ -35,7 +35,7 @@ export const itemsApi = {
   },
 
   async create(item: Omit<Item, 'id' | 'createdAt' | 'updatedAt'>): Promise<Item> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items`, {
+    const response = await fetch(`${API_BASE_URL}/items`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ export const itemsApi = {
   },
 
   async update(id: number, item: Omit<Item, 'id' | 'createdAt' | 'updatedAt'>): Promise<Item> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items/#[[${id}]]#`, {
+    const response = await fetch(`${API_BASE_URL}/items/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -57,22 +57,22 @@ export const itemsApi = {
       body: JSON.stringify(item),
     });
     if (!response.ok) {
-      throw new Error(`Failed to update item #[[${id}]]#`);
+      throw new Error(`Failed to update item ${id}`);
     }
     return response.json();
   },
 
   async delete(id: number): Promise<void> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items/#[[${id}]]#`, {
+    const response = await fetch(`${API_BASE_URL}/items/${id}`, {
       method: 'DELETE',
     });
     if (!response.ok) {
-      throw new Error(`Failed to delete item #[[${id}]]#`);
+      throw new Error(`Failed to delete item ${id}`);
     }
   },
 
   async count(): Promise<number> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items/count`);
+    const response = await fetch(`${API_BASE_URL}/items/count`);
     if (!response.ok) {
       throw new Error('Failed to get item count');
     }
@@ -80,11 +80,11 @@ export const itemsApi = {
   },
 
   async toggleProcessed(id: number): Promise<Item> {
-    const response = await fetch(`#[[${API_BASE_URL}]]#/items/#[[${id}]]#/toggle-processed`, {
+    const response = await fetch(`${API_BASE_URL}/items/${id}/toggle-processed`, {
       method: 'POST',
     });
     if (!response.ok) {
-      throw new Error(`Failed to toggle processed flag for item #[[${id}]]#`);
+      throw new Error(`Failed to toggle processed flag for item ${id}`);
     }
     return response.json();
   },
