@@ -18,6 +18,9 @@
         <requiredProperty key="package">
             <defaultValue>com.example.myapp</defaultValue>
         </requiredProperty>
+        <requiredProperty key="tests">
+            <defaultValue>tests</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
