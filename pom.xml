@@ -14,6 +14,10 @@
     <description>Maven archetype for full-stack Spring Boot and Next.js applications</description>
     <url>https://github.com/jrand0m/fast-js-spring-mvn-archetype</url>
 
+    <prerequisites>
+        <maven>3.6.3</maven>
+    </prerequisites>
+
     <licenses>
         <license>
             <name>MIT License</name>
@@ -66,7 +70,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.1.1</version>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.3.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
