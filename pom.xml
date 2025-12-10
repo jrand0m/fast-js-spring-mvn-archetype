@@ -15,7 +15,7 @@
     <url>https://github.com/jrand0m/fast-js-spring-mvn-archetype</url>
 
     <prerequisites>
-        <maven>3.6.3</maven>
+        <maven>3.9.9</maven>
     </prerequisites>
 
     <licenses>
