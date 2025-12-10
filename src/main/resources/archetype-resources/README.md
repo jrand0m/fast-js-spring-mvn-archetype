@@ -17,6 +17,8 @@ This project provides a complete full-stack application with:
 - **Java**: JDK 21 or higher
 - **Maven**: 3.9.0 or higher
 - **Node.js**: 20.x or higher (automatically installed by Maven)
+- **just**: Command runner (https://github.com/casey/just)
+- **tmux**: Terminal multiplexer (for `just run`)
 - **Docker**: For containerization (optional)
 
 ## Quick Start
@@ -34,15 +36,30 @@ This command:
 - Builds the Next.js frontend
 - Packages everything into a Spring Boot JAR
 
-### 2. Run Development Server
+### 2. Run Development Servers
+
+#### Using just (Recommended)
 
 ```bash
-mvn dev:run
+just run
 ```
 
-This starts:
-- Next.js development server on port 3001 (with hot module replacement)
-- Spring Boot application on port 3003 (serving API)
+This starts both servers in a tmux session:
+- **Backend**: Spring Boot on port 3003
+- **Frontend**: Next.js on port 3001 (with hot module replacement)
+
+**Tmux controls**:
+- Detach: `Ctrl+B` then `D`
+- Switch windows: `Ctrl+B` then `N` (next) or `P` (previous)
+- Stop servers: `just stop` or `Ctrl+C` in each window
+
+#### Using Maven
+
+```bash
+mvn exec:exec -Pdev
+```
+
+This starts both servers in the same terminal.
 
 Access the application at http://localhost:3003
 
@@ -57,6 +74,38 @@ While running in development mode:
   - JDBC URL: `jdbc:h2:mem:testdb`
   - Username: `sa`
   - Password: (leave blank)
+
+## Just Commands
+
+The project includes a `justfile` for common tasks:
+
+```bash
+# List all available commands
+just
+
+# Run both servers in tmux
+just run
+
+# Stop development servers
+just stop
+
+# Build the project
+just build
+
+# Run tests
+just test all           # All tests
+just test backend       # Backend tests only
+just test frontend      # Frontend tests only
+
+# Package application
+just package
+
+# Clean build artifacts
+just clean
+
+# Install dependencies
+just install
+```
 
 ## Maven Commands
 

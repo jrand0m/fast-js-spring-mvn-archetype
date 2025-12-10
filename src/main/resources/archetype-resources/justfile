@@ -1,0 +1,75 @@
+# Default recipe - show available commands
+default:
+    @just --list
+
+# Run both frontend and backend development servers in tmux
+run:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    # Check if tmux is installed
+    if ! command -v tmux &> /dev/null; then
+        echo "Error: tmux is not installed. Please install it first."
+        exit 1
+    fi
+
+    # Session name
+    SESSION="dev-servers"
+
+    # Kill existing session if it exists
+    tmux kill-session -t $SESSION 2>/dev/null || true
+
+    # Create new session with backend in first window
+    tmux new-session -d -s $SESSION -n backend
+    tmux send-keys -t $SESSION:backend "mvn spring-boot:run -Dspring-boot.run.profiles=dev" C-m
+
+    # Create frontend window
+    tmux new-window -t $SESSION -n frontend
+    tmux send-keys -t $SESSION:frontend "cd frontend && npm run dev" C-m
+
+    # Select backend window
+    tmux select-window -t $SESSION:backend
+
+    echo "Development servers starting in tmux session '$SESSION'"
+    echo "  Backend: http://localhost:3003"
+    echo "  Frontend: http://localhost:3001"
+    echo ""
+    echo "To attach: tmux attach -t $SESSION"
+    echo "To detach: Ctrl+B then D"
+    echo "To stop: just stop"
+    echo ""
+
+    # Attach to session
+    tmux attach -t $SESSION
+
+# Stop the development servers
+stop:
+    tmux kill-session -t dev-servers 2>/dev/null || echo "No running dev-servers session found"
+
+# Build the project
+build:
+    mvn clean install
+
+# Run backend tests
+test backend:
+    mvn test -Ptest-be
+
+# Run frontend tests
+test frontend:
+    mvn test -Ptest-fe
+
+# Run all tests
+test all:
+    mvn test
+
+# Package the application
+package:
+    mvn package
+
+# Clean build artifacts
+clean:
+    mvn clean
+
+# Install dependencies
+install:
+    mvn clean install

@@ -27,9 +27,11 @@
             <includes>
                 <include>README.md</include>
                 <include>.gitignore</include>
+                <include>.tool-versions</include>
                 <include>Dockerfile</include>
                 <include>.dockerignore</include>
                 <include>pom.xml</include>
+                <include>justfile</include>
             </includes>
         </fileSet>
 
